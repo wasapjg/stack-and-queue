@@ -63,8 +63,8 @@ class Pila : IColleccion
         }
         else
         {
-            object obj = pila[contador];
-            pila[contador] = null;
+            object obj = pila[contador - 1];
+            pila[contador - 1] = null;
             contador--;
             return obj;
         }
@@ -72,20 +72,19 @@ class Pila : IColleccion
 
     public object primero()
     {
-        return pila[contador];
+        return pila[contador - 1];
     }
 
     public bool añadir(object obj)
     {
-        contador++;
         if(contador == Tamaño)
         {
-            contador--;
             return false;
         }
         else
         {
             pila[contador] = obj;
+            contador++;
             return true;
         }
     }
@@ -109,6 +108,9 @@ class Program
         Pila oPila = new Pila(4);
         Console.WriteLine(oPila.añadir(1));
         Console.WriteLine(oPila.añadir(2));
+        Console.WriteLine(oPila.añadir(3));
+        Console.WriteLine(oPila.añadir(4));
+        Console.WriteLine(oPila.añadir(5));
         Console.WriteLine(oPila.estaVacia());
         Console.WriteLine(oPila.primero());
         Console.WriteLine(oPila.extraer());
